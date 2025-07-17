@@ -15,7 +15,7 @@ jobs:
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 74.225.249.122
-          username: ubuntu
+          username: azureuser
           key: ${{ secrets.PRIVATE_SSH_KEY_AZURE }}
           port: 22
           script: |
