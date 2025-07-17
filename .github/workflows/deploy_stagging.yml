@@ -1,0 +1,23 @@
+name: "Deployment to staging script"
+
+on: 
+  push: 
+    branches: 
+      - main
+
+jobs:
+  deploy:
+    name: Push to EC2 staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into EC2 and deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 74.225.249.122
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_SSH_KEY_AZURE }}
+          port: 22
+          script: |
+              cd /home/azureuser/ci-cd-testing
+              ./deploy.sh
